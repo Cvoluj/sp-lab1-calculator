@@ -1,0 +1,54 @@
+From 226d23ba7feb284a395a01eb1f28893b3e0e2ace Mon Sep 17 00:00:00 2001
+From: Sergii Piatakov <sergii.piatakov@globallogic.com>
+Date: Thu, 15 Nov 2018 15:43:25 +0200
+Subject: [PATCH 2/2] add operation logs in stdout
+
+---
+ calculator.cpp | 12 ++++++++++--
+ calculator.h   |  4 ++--
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/calculator.cpp b/calculator.cpp
+index d93e35b..ac12bc7 100644
+--- a/calculator.cpp
++++ b/calculator.cpp
+@@ -1,11 +1,19 @@
+ #include "calculator.h"
+ 
+ int Calculator::Add (double a, double b)
+-{
++{   
++    std::cout << "Adding " << a << " and " << b << std::endl;
+ 	return a + b + 0.5;
+ }
+ 
+ int Calculator::Sub (double a, double b)
+-{
++{   
++    std::cout << "Subtracting " << b << " from " << a << std::endl;
+     return Add (a, -b);
+ }
++
++int Calculator::Mul (double a, double b)
++{
++    std::cout << "Multiplying " << a << " by " << b << std::endl;
++    return a * b + 0.5;
++}
+diff --git a/calculator.h b/calculator.h
+index 3740907..ffe75fa 100644
+--- a/calculator.h
++++ b/calculator.h
+@@ -4,8 +4,8 @@
+ class Calculator
+ {
+     public:
+-        int Add (double, double);
+-        int Sub (double, double);
++        int Add (int, int);
++        int Mul (double, double);
+ };
+ 
+ #endif//CALCULATOR_H
+-- 
+2.44.1.windows.1
+
